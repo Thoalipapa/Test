@@ -21,10 +21,10 @@ public class IteratorBeispiele {
 		
 		
 		
-		System.out.println("test");
+		System.out.println();
 		
 	
-	// halloo
+	
 	}
 
 }
