@@ -6,22 +6,22 @@ import java.util.List;
 public class Auto {
 
 	private String Hersteller;
-	private Long Laufleistung;
-	private Double Preis;
+	private long Laufleistung;
+	private double Preis;
 	private String Frabe;
-	private Boolean Unfallwagen;
+	private boolean Unfallwagen;
 	private String Kraftstoff;
-	private Double Leistung;
+	private double Leistung;
 	
 	static List <Auto> list= new ArrayList<Auto>();
 	
 
 	
 	
-	public Auto(String hersteller, Long laufleistung, Double preis,
-			String frabe, Boolean unfallwagen, String kraftstoff,
-			Double leistung) {
-		super();
+	public Auto(String hersteller, long laufleistung, double preis,
+			String frabe, boolean unfallwagen, String kraftstoff,
+			double leistung) {
+		
 		Hersteller = hersteller;
 		Laufleistung = laufleistung;
 		Preis = preis;
@@ -36,7 +36,7 @@ public class Auto {
 	}
 	public static int getAnzahl(){
 		int counter=0;
-		for (@SuppressWarnings("unused") Auto auto : list) {
+		for ( @SuppressWarnings("unused") Auto auto : list) {
 			counter++;
 		}
 		return counter;
@@ -70,25 +70,53 @@ public class Auto {
 		return Kraftstoff;
 	}
 
-	public String richtigFalsch(boolean Unfallwagen) {
-
-		if (Unfallwagen) {
-			return "";
-		} else {
-			return "unfallfrei";
-		}
-	}
 	
-    public static double erloes_inkl_nachlass( double in1, double in2){
+	
+    public static double erloes_inkl_nachlass( double nachlassunfallfrei, double nachlassunfall){
 		
-    	
+    	double wert=0.0;
 		for (int i = 0; i < getAnzahl(); i++) {
-			//Auto a = list.get(i);
-		//	if(a.)
+		Auto a = list.get(i);
+			if(a.Unfallwagen){
+				wert+=(a.Preis*(1-nachlassunfall));
+			}
+			if(a.Unfallwagen==false){
+				wert+=(a.Preis*(1-nachlassunfallfrei));
+			}
 		}
 
-		return in2;
+		return wert;
 	}
+    
+    public static double anteil_kraftstoffart(String s){
+    	
+    	double wert=0.0;
+    	Auto a;
+    	for (int i = 0; i < getAnzahl(); i++) {
+			a=list.get(i);
+			if(a.Kraftstoff==s){
+				wert++;
+			}
+		}
+    	
+    	return 100/(double)getAnzahl()*wert;
+    }
+    
+    public static double anteil_unfallwagen(){
+    	
+    	double wert=0.0;
+    	double counter=0.0;
+    	Auto a ;
+    	for (int i = 0; i < getAnzahl(); i++) {
+			a= list.get(i);
+			counter++;
+			if(a.Unfallwagen){
+				wert++;
+			}
+		}
+    	
+    	return 100/counter*wert;
+    }
 
 	
 
@@ -96,8 +124,30 @@ public class Auto {
 		return "Hersteller: " + this.Hersteller + "\n" + "Preis: " + this.Preis
 				+ "\n" + "Motor: " + this.Leistung + "Ps (" + this.Kraftstoff
 				+ ")\n" + "KM-Stand: " + this.Laufleistung + "\n" + "Farbe: "
-				+ this.Frabe + "\n" + richtigFalsch(this.Unfallwagen)+"\n";
+				+ this.Frabe + "\n" +((Unfallwagen==false)? "Unfallfrei":"" )+"\n";
 		
+	}
+	
+	public static void bubbleSort() {
+		boolean unsorted = true;
+		Auto a;
+		Auto b;
+		
+		while (unsorted) {
+			unsorted = false;
+			for (int i = 0; i < getAnzahl(); i++) {
+			    
+				a= list.get(i);
+			    b= list.get(i+1);
+				if (!(a.getPreis() >= b.getPreis())) {
+				    Auto dummy = a;
+					a = b;
+					b = dummy;
+					unsorted = true;
+				}
+			     
+			}
+		}
 	}
 
 }
