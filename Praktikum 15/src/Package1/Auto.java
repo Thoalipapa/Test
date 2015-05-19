@@ -3,19 +3,19 @@ package Package1;
 public class Auto {
 
 	private String Hersteller;
-	private Long Laufleistung;
-	private Double Preis;
+	private long Laufleistung;
+	private double Preis;
 	private String Frabe;
-	private Boolean Unfallwagen;
+	private boolean Unfallwagen;
 	private String Kraftstoff;
-	private Double Leistung;
+	private double Leistung;
 	
 
 	
 	
-	public Auto(String hersteller, Long laufleistung, Double preis,
-			String frabe, Boolean unfallwagen, String kraftstoff,
-			Double leistung) {
+	public Auto(String hersteller, long laufleistung, double preis,
+			String frabe, boolean unfallwagen, String kraftstoff,
+			double leistung) {
 		super();
 		Hersteller = hersteller;
 		Laufleistung = laufleistung;
