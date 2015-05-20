@@ -110,22 +110,13 @@ public class Auto {
 	}
     
 
-	public String richtigFalsch(boolean Unfallwagen) {
-
-		if (Unfallwagen) {
-			return "";
-		} else {
-			return "unfallfrei";
-		}
-	}
-
 	
-
 	public String toString() {
-		return "Hersteller: " + this.Hersteller + "\n" + "Preis: " + this.Preis
+		return "---\n"+
+				"Hersteller: " + this.Hersteller + "\n" + "Preis: " + this.Preis
 				+ "\n" + "Motor: " + this.Leistung + "Ps (" + this.Kraftstoff
 				+ ")\n" + "KM-Stand: " + this.Laufleistung + "\n" + "Farbe: "
-				+ this.Frabe + "\n" + richtigFalsch(this.Unfallwagen);
+				+ this.Frabe +((Unfallwagen==false)? "\nunfallfrei\n---":"\n---");
 		
 	}
 

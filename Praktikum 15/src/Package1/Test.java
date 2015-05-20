@@ -13,7 +13,7 @@ public class Test {
 				 bubbleSort(autos);
 				 for(Auto a : autos) {
 				 System.out.println(a);
-				 System.out.println();
+				 
 				
 				 }
 				 

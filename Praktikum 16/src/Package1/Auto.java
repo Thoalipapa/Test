@@ -120,11 +120,12 @@ public class Auto {
 
 	
 
-	public String toString() {
-		return "Hersteller: " + this.Hersteller + "\n" + "Preis: " + this.Preis
+    public String toString() {
+		return "---\n"+
+				"Hersteller: " + this.Hersteller + "\n" + "Preis: " + this.Preis
 				+ "\n" + "Motor: " + this.Leistung + "Ps (" + this.Kraftstoff
 				+ ")\n" + "KM-Stand: " + this.Laufleistung + "\n" + "Farbe: "
-				+ this.Frabe + "\n" +((Unfallwagen==false)? "Unfallfrei":"" )+"\n";
+				+ this.Frabe +((Unfallwagen==false)? "\nunfallfrei\n---":"\n---");
 		
 	}
 	
@@ -135,14 +136,14 @@ public class Auto {
 		
 		while (unsorted) {
 			unsorted = false;
-			for (int i = 0; i < getAnzahl(); i++) {
+			for (int i = 0; i < getAnzahl()-1; i++) {
 			    
 				a= list.get(i);
 			    b= list.get(i+1);
 				if (!(a.getPreis() >= b.getPreis())) {
 				    Auto dummy = a;
-					a = b;
-					b = dummy;
+					list.set(i, b);
+					list.set(i+1,dummy);
 					unsorted = true;
 				}
 			     
